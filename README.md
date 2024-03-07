@@ -1,2 +1,5 @@
 # lightweight
-Fitness
+
+Strength
+Honor
+Wisdom
