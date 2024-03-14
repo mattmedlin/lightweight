@@ -26,9 +26,10 @@ export default function SignInScreen() {
     }
   };
   return (
-    <View>
-      <View>
+    <View className="items-center justify-center mt-[50%]">
+      <View className="w-2/3 pb-2">
         <TextInput
+          className="border border-stone-600 text-white rounded-md  h-12 px-2"
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Email..."
@@ -36,8 +37,9 @@ export default function SignInScreen() {
         />
       </View>
 
-      <View>
+      <View className="w-2/3 pb-2">
         <TextInput
+          className="border border-stone-600 text-white rounded-md  h-12 px-2"
           value={password}
           placeholder="Password..."
           secureTextEntry={true}
@@ -45,8 +47,11 @@ export default function SignInScreen() {
         />
       </View>
 
-      <TouchableOpacity onPress={onSignInPress}>
-        <Text>Sign in</Text>
+      <TouchableOpacity
+        className="w-2/3 gray-900 bg-stone-600 border border-stone-600 text-white rounded-md  h-12 px-2"
+        onPress={onSignInPress}
+      >
+        <Text className="m-auto">Sign in</Text>
       </TouchableOpacity>
     </View>
   );
