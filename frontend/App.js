@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { SafeAreaView, Text, Button } from "react-native";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import Constants from "expo-constants";
-import SignInWithOAuth from "./components/SignInWithOAuth";
 import SignInScreen from "./components/SignInScreen";
 import SignUpScreen from "./components/SignUpScreen";
 
@@ -28,7 +27,6 @@ export default function App() {
           {!showSignUp ? (
             <>
               <SignInScreen />
-              <SignInWithOAuth />
               <Button title="Sign Up" onPress={handleSignUpPress} />
             </>
           ) : (
