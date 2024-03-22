@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1710296455950,
-      "tag": "0000_exotic_blue_blade",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1710296980027,
-      "tag": "0001_freezing_morlun",
+      "when": 1710623854670,
+      "tag": "0000_flaky_shadow_king",
       "breakpoints": true
     }
   ]
