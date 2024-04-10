@@ -1,13 +1,16 @@
 from django.db import models
 
-class User(models.Model):
-    name = models.CharField(max_length=100)
+class UserDetails(models.Model):
+    clerk_user_id = models.CharField(max_length=100, unique=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
     sex = models.CharField(max_length=10)
     weight = models.FloatField()
     height = models.FloatField()
 
 class Workout(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
     date = models.DateField()
     duration = models.IntegerField()
 

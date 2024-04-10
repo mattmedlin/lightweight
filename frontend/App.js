@@ -15,9 +15,27 @@ export default function App() {
   const handleSignInPress = () => {
     setShowSignUp(false);
   };
+
+  const tokenCache = {
+    async getToken(key) {
+      try {
+        return SecureStore.getItemAsync(key);
+      } catch (err) {
+        return null;
+      }
+    },
+    async saveToken(key, value) {
+      try {
+        return SecureStore.setItemAsync(key, value);
+      } catch (err) {
+        return;
+      }
+    },
+  };
   return (
     <ClerkProvider
       publishableKey={Constants.expoConfig.extra.clerkPublishableKey}
+      tokenCache={tokenCache}
     >
       <SafeAreaView className="bg-gray-900 flex-1">
         <SignedIn>

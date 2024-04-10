@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
+import axios from "axios";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -33,6 +34,16 @@ export default function SignUpScreen() {
 
       // change the UI to our pending section.
       setPendingVerification(true);
+
+      // Extract user ID from signUpResponse and send user details to Django backend
+      const signUpUrl = "http://localhost:8000/api/users/";
+      const clerkUserId = signUpResponse.userId; // Assuming signUpResponse contains the user ID from Clerk
+      await axios.post(signUpUrl, {
+        clerk_user_id: clerkUserId,
+        first_name: firstName,
+        last_name: lastName,
+        email: emailAddress,
+      });
     } catch (err) {
       console.error(JSON.stringify(err, null, 2));
     }

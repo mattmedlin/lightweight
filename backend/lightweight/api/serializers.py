@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import User, Workout, Equipment, Exercise, ExerciseDetail, MuscleGroup
+from .models import UserDetails, Workout, Equipment, Exercise, ExerciseDetail, MuscleGroup
 
-class UserSerializer(serializers.ModelSerializer):
+class UserDetailsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = UserDetails
         fields = '__all__'
 
 class WorkoutSerializer(serializers.ModelSerializer):

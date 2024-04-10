@@ -1,7 +1,7 @@
 from rest_framework import generics
 from .models import User, Workout, Equipment, Exercise, ExerciseDetail, MuscleGroup
 from .serializers import (
-    UserSerializer,
+    UserDetailsSerializer,
     WorkoutSerializer,
     EquipmentSerializer,
     ExerciseSerializer,
@@ -9,13 +9,13 @@ from .serializers import (
     MuscleGroupSerializer
 )
 
-class UserListCreateAPIView(generics.ListCreateAPIView):
+class UserDetailsListCreateAPIView(generics.ListCreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserDetailsSerializer
 
-class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class UserDetailsAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserDetailsSerializer
 
 class WorkoutListCreateAPIView(generics.ListCreateAPIView):
     queryset = Workout.objects.all()
