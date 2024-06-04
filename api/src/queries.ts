@@ -6,6 +6,17 @@ export async function createUser(data: InsertUser) {
   await db.insert(users).values(data);
 }
 
+export async function updateUser(
+  id: SelectUser["id"],
+  data: Partial<Omit<SelectUser, "id">>
+) {
+  await db.update(users).set(data).where(eq(users.id, id));
+}
+
+export async function deleteUser(id: SelectUser["id"]) {
+  await db.delete(users).where(eq(users.id, id));
+}
+
 export async function getUserById(id: SelectUser["id"]): Promise<
   Array<{
     id: number;
