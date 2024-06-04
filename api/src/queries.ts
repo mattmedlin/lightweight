@@ -17,6 +17,17 @@ export async function deleteUser(id: SelectUser["id"]) {
   await db.delete(users).where(eq(users.id, id));
 }
 
+export async function getUsers(): Promise<
+  Array<{
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  }>
+> {
+  return db.select().from(users);
+}
+
 export async function getUserById(id: SelectUser["id"]): Promise<
   Array<{
     id: number;
