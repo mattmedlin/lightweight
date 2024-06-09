@@ -15,6 +15,13 @@
       "when": 1717464007464,
       "tag": "0001_ambitious_aaron_stack",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1717972394027,
+      "tag": "0002_needy_professor_monster",
+      "breakpoints": true
     }
   ]
 }

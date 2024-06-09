@@ -1,40 +1,40 @@
 import { eq } from "drizzle-orm";
 import { db } from "./db";
-import { InsertUser, SelectUser, users } from "./schema";
+import { users, User, NewUser } from "./schema";
 
-export async function createUser(data: InsertUser) {
-  await db.insert(users).values(data);
-}
+export const getUsers = async () => {
+  return await db
+    .select({ id: users.id, username: users.username, email: users.email })
+    .from(users);
+};
 
-export async function updateUser(
-  id: SelectUser["id"],
-  data: Partial<Omit<SelectUser, "id">>
-) {
-  await db.update(users).set(data).where(eq(users.id, id));
-}
+export const getUserByEmail = async (email: string) => {
+  return await db.select().from(users).where(eq(users.email, email));
+};
 
-export async function deleteUser(id: SelectUser["id"]) {
-  await db.delete(users).where(eq(users.id, id));
-}
+export const getUserBySessionToken = async (sessionToken: string) => {
+  return await db
+    .select()
+    .from(users)
+    .where(eq(users.sessionToken, sessionToken));
+};
 
-export async function getUsers(): Promise<
-  Array<{
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-  }>
-> {
-  return db.select().from(users);
-}
+export const createUser = async (newUser: NewUser) => {
+  return await db.insert(users).values(newUser).returning({
+    id: users.id,
+    username: users.username,
+    email: users.email,
+  });
+};
 
-export async function getUserById(id: SelectUser["id"]): Promise<
-  Array<{
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-  }>
-> {
-  return db.select().from(users).where(eq(users.id, id));
-}
+export const updateUserById = async (id: number, updatedUser: User) => {
+  return await db
+    .update(users)
+    .set(updatedUser)
+    .where(eq(users.id, id))
+    .returning({
+      id: users.id,
+      username: users.username,
+      email: users.email,
+    });
+};
