@@ -1,6 +1,6 @@
 import express from "express";
 import SESSION_TOKEN from "constants";
-import { getUserBySessionToken } from "queries";
+import { getUserBySessionToken } from "../queries";
 
 export const isAuthenticated = async (
   req: express.Request,

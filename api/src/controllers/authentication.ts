@@ -1,6 +1,6 @@
 import express from "express";
-import { createUser, getUserByEmail, updateUserById } from "queries";
-import { authentication, random } from "helpers";
+import { createUser, getUserByEmail, updateUserById } from "../queries";
+import { authentication, random } from "../helpers";
 import SESSION_TOKEN from "constants";
 import DOMAIN from "constants";
 
