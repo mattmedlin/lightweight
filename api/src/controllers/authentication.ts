@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser, getUserByEmail, updateUserById } from "../queries";
+import { createUser, getUserByEmail, updateUserById } from "../queries/user";
 import { authentication, random } from "../helpers";
 import { DOMAIN, SESSION_TOKEN } from "../constants";
 
