@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { config } from "dotenv";
 
 export const authentication = (salt: string, password: string): string => {
   return crypto

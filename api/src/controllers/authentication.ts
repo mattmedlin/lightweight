@@ -1,8 +1,7 @@
 import express from "express";
 import { createUser, getUserByEmail, updateUserById } from "../queries";
 import { authentication, random } from "../helpers";
-import SESSION_TOKEN from "constants";
-import DOMAIN from "constants";
+import { DOMAIN, SESSION_TOKEN } from "../constants";
 
 export const register = async (req: express.Request, res: express.Response) => {
   try {
@@ -62,14 +61,14 @@ export const login = async (req: express.Request, res: express.Response) => {
     const cookieOptions = {
       domain: DOMAIN,
       path: "/",
-      expires: new Date(Date.now(), +900000),
+      expires: new Date(Date.now() + 900000),
     } as any;
 
     res.cookie(SESSION_TOKEN as any, user.sessionToken, cookieOptions);
 
-    return res.sendStatus(200).json(updatedUser).end();
+    return res.status(200).json(updatedUser);
   } catch (error) {
     console.log(error);
-    return res.sendStatus(400);
+    return res.sendStatus(500);
   }
 };
