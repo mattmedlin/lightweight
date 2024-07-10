@@ -11,7 +11,11 @@ export default function RegisterScreen() {
 
   const handleRegister = async () => {
     try {
-      const user = await register(username, email, password);
+      const user = await register(
+        username.toLowerCase(),
+        email.toLowerCase(),
+        password
+      );
       console.log("Registered user:", user);
       // Handle successful registration
       router.push("/login");

@@ -10,7 +10,7 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     try {
-      const user = await login(email, password);
+      const user = await login(email.toLocaleLowerCase(), password);
       console.log("Logged in user:", user);
       // Handle successful login
       router.push("/(tabs)"); // Redirect to your main authenticated area
